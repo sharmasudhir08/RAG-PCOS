@@ -14,6 +14,7 @@ RAG-PCOS/
 ├── CITATION.cff            software citation (paper citation added after publication)
 ├── .gitignore
 ├── requirements.txt
+├── setup.py                 one-command setup (venv, deps, models)
 ├── main.py                 evaluation driver
 ├── DocumentRetriever.py     PDF ingestion, chunking, FAISS indexing
 ├── DocumentQA.py            retrieval + context assembly + fallback
@@ -40,24 +41,22 @@ question --> DocumentQA.py (retrieve top-k, build context) --> ResponseGenerator
 
 ## Setup
 
+One command sets up everything -- virtual environment, dependencies, and both pretrained models (see `NOTICE` for their licenses):
+
 ```bash
-python -m venv venv
-# Windows: venv\Scripts\activate   |   macOS/Linux: source venv/bin/activate
-pip install -r requirements.txt
+python setup.py
 ```
 
-### Download the models
-
-The pretrained models are not included in this repository (see `NOTICE`). Download them into a local `models/` folder:
+Safe to re-run; it skips steps that are already done. When it finishes, activate the environment:
 
 ```bash
-huggingface-cli download sentence-transformers/all-MiniLM-L6-v2 --local-dir models/all-MiniLM-L6-v2
-huggingface-cli download TinyLlama/TinyLlama-1.1B-Chat-v1.0 --local-dir models/TinyLlama-1.1B-Chat-v1.0
+# Windows:      venv\Scripts\activate
+# macOS/Linux:  source venv/bin/activate
 ```
 
 ### Build the retrieval corpus
 
-This repository does not redistribute the source PDFs (see `PAPERS.md` for why, and for the full list of papers used in the original study). Create a `Data/` folder and populate it with PDF files of PCOS research literature — ideally matching `PAPERS.md`'s titles if you want to reproduce the original study's results.
+This repository does not redistribute the source PDFs (see `PAPERS.md` for why, and for the full list of papers used in the original study). `setup.py` creates an empty `Data/` folder for you -- populate it with PDF files of PCOS research literature, ideally matching `PAPERS.md`'s titles if you want to reproduce the original study's results:
 
 ```
 Data/
