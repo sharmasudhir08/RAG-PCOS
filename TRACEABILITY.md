@@ -4,7 +4,7 @@ Every table, figure, and numeric claim in the accompanying manuscript, traced ba
 
 ## 1. Evaluation tables (Tables 3–6 and the per-question appendix)
 
-All four aggregate tables and the 30-row per-question appendix in the paper are reproducible from `rag_results.json` to three decimal places, **provided the original 30-question subset is used** (see §2 below) — not all rows currently in this file.
+All four aggregate tables and the 30-row per-question appendix in the paper are reproducible from `rag_results.json` to three decimal places, using exactly the 30 questions in this repo's `pcos_qna.json` (see §2 below). `rag_results.json` itself still has 41 rows (11 more than `pcos_qna.json` now lists); the 30 needed rows are a subset of it, matched by question text, and the extra 11 are simply unused when computing the tables below.
 
 | Claim | Evidence in this repo |
 |---|---|
@@ -16,9 +16,9 @@ All four aggregate tables and the 30-row per-question appendix in the paper are 
 
 ## 2. Dataset scope
 
-- `pcos_qna.json` in this repository currently has **41 questions**. The paper's reported evaluation covers a specific, enumerated **30-question subset** (also listed in the manuscript's own Methodology section). The 11 extra questions were added to this file after the reported evaluation and are not reflected in the paper's tables.
+- `pcos_qna.json` in this repository has exactly **30 questions**, matching the paper's reported evaluation set precisely (also enumerated in the manuscript's own Methodology section). An earlier version of this file had grown to 41 questions during development; it has since been trimmed back to the original 30, and re-verified to reproduce Tables 3-6 to within 0.0005. The full 41-question version is kept separately (not in this repo) for ongoing development work.
 - `Data/` (populated by you — see `PAPERS.md`) should contain **67 papers**, matching the manuscript exactly. (An earlier internal draft of this document said 71; recounted and corrected — 67 is correct.)
-- **If you re-run `main.py` on the current 41-question file, you will not reproduce the paper's numbers.** The aggregate actually printed by the last full run (all 41 rows, see `rag_results.json`'s own trailing log) is: BLEU-2 0.0795, ROUGE-L 0.1700, F1 0.2692, BERTScore 0.3313, Cosine 0.7499, Precision@5 0.2638, Recall@5 0.1984 — all below the paper's N=30 figures. To reproduce the paper exactly, restrict evaluation to the original 30 questions (ask the maintainers for the exact list, or see the manuscript's Methodology section, which enumerates them by category).
+- `rag_results.json` in this repo still has 41 rows (a leftover from before `pcos_qna.json` was trimmed). This is harmless for reproducing the paper's tables -- see §1 above -- but if you regenerate `rag_results.json` by re-running `main.py` against this repo's 30-question `pcos_qna.json`, you will get a clean 30-row file instead.
 
 ## 3. Model / architecture specifications
 

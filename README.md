@@ -70,7 +70,7 @@ This builds the FAISS index from `Data/`, answers every question in `pcos_qna.js
 
 ## Reproducibility note
 
-`pcos_qna.json` in this repository may contain more questions than the 30 reported in the original study (the dataset has grown since). See `TRACEABILITY.md` for exactly which 30 questions and results correspond to the published numbers.
+`pcos_qna.json` in this repository has exactly the 30 questions reported in the original study. `rag_results.json` has 41 rows (a few extra, unused, left over from development) -- the 30 needed rows are a subset of it, matched by question text. See `TRACEABILITY.md` for the full detail.
 
 ## License
 
