@@ -4,6 +4,32 @@ A Retrieval-Augmented Generation (RAG) system for question-answering on Polycyst
 
 This repository accompanies the manuscript *"Retrieval-Augmented Generation for Medical QA: A Case Study on Polycystic Ovary Syndrome"* (under review). The full paper will be linked here once published — see `CITATION.cff` for how to cite the software in the meantime.
 
+## Repository Structure
+
+```
+RAG-PCOS/
+├── README.md              this file
+├── LICENSE                MIT
+├── NOTICE                 third-party model/library attribution
+├── CITATION.cff            software citation (paper citation added after publication)
+├── .gitignore
+├── requirements.txt
+├── main.py                 evaluation driver
+├── DocumentRetriever.py     PDF ingestion, chunking, FAISS indexing
+├── DocumentQA.py            retrieval + context assembly + fallback
+├── ResponseGenerator.py     TinyLlama wrapper (RAG + no-retrieval baseline)
+├── pcos_qna.json            30 gold question/reference-answer pairs
+├── rag_results.json         30 full per-question evaluation results
+├── PAPERS.md                bibliography manifest for the source corpus
+├── TRACEABILITY.md          every reported number traced to its source
+│
+├── Data/                   (not included -- create and populate yourself, see below)
+│   └── *.pdf
+└── models/                 (not included -- download yourself, see below)
+    ├── all-MiniLM-L6-v2/
+    └── TinyLlama-1.1B-Chat-v1.0/
+```
+
 ## Pipeline
 
 ```
