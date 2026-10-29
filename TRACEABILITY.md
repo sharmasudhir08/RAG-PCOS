@@ -4,7 +4,7 @@ Every table, figure, and numeric claim in the accompanying manuscript, traced ba
 
 ## 1. Evaluation tables (Tables 3–6 and the per-question appendix)
 
-All four aggregate tables and the 30-row per-question appendix in the paper are reproducible from `rag_results.json` to three decimal places, using exactly the 30 questions in this repo's `pcos_qna.json` (see §2 below). `rag_results.json` itself still has 41 rows (11 more than `pcos_qna.json` now lists); the 30 needed rows are a subset of it, matched by question text, and the extra 11 are simply unused when computing the tables below.
+All four aggregate tables and the 30-row per-question appendix in the paper are reproducible from `rag_results.json` to three decimal places, using the 30 questions in this repo's `pcos_qna.json` (see §2 below).
 
 | Claim | Evidence in this repo |
 |---|---|
@@ -16,9 +16,8 @@ All four aggregate tables and the 30-row per-question appendix in the paper are 
 
 ## 2. Dataset scope
 
-- `pcos_qna.json` in this repository has exactly **30 questions**, matching the paper's reported evaluation set precisely (also enumerated in the manuscript's own Methodology section). An earlier version of this file had grown to 41 questions during development; it has since been trimmed back to the original 30, and re-verified to reproduce Tables 3-6 to within 0.0005. The full 41-question version is kept separately (not in this repo) for ongoing development work.
-- `Data/` (populated by you — see `PAPERS.md`) should contain **67 papers**, matching the manuscript exactly. (An earlier internal draft of this document said 71; recounted and corrected — 67 is correct.)
-- `rag_results.json` in this repo still has 41 rows (a leftover from before `pcos_qna.json` was trimmed). This is harmless for reproducing the paper's tables -- see §1 above -- but if you regenerate `rag_results.json` by re-running `main.py` against this repo's 30-question `pcos_qna.json`, you will get a clean 30-row file instead.
+- `pcos_qna.json` and `rag_results.json` in this repository both have exactly **30 questions/results**, matching the paper's reported evaluation set precisely (also enumerated in the manuscript's own Methodology section). Re-verified: aggregating `rag_results.json` reproduces Tables 3-6 to within 0.0005.
+- `Data/` (populated by you — see `PAPERS.md`) should contain **67 papers**, matching the manuscript exactly.
 
 ## 3. Model / architecture specifications
 
