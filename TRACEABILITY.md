@@ -12,7 +12,7 @@ All four aggregate tables and the 30-row per-question appendix in the paper are 
 | Same 5 metrics, generator-only baseline: 0.625 / 0.241 / 0.282 / 0.154 / 0.075 | `rag_results.json` `generator_*` fields, same subset: 0.6245 / 0.2412 / 0.2821 / 0.1535 / 0.0754 |
 | Estimated Precision@5 0.297, Recall@5 0.205 | `rag_results.json` `precision_at_k`/`recall_at_k`, same subset: 0.2967 / 0.2049 |
 | Semantic-alignment tiers: High 6 (20%), Intermediate 18 (60%), Low 6 (20%) | Re-thresholding `cosine_similarity` at 0.85/0.70 cutoffs over the same subset reproduces 6/18/6 exactly — **but this thresholding script is not itself present anywhere in this repository** (see §4) |
-| Per-question B2S/RS/FS/BS/CS values | 27 of 30 rows match `rag_results.json` to ±0.002; 3 rows differ by more (small, unexplained) (see §5) |
+| Per-question B2S/RS/FS/BS/CS values | All 30 of 30 rows match `rag_results.json` exactly (see §5) |
 
 ## 2. Dataset scope
 
@@ -48,8 +48,7 @@ All four aggregate tables and the 30-row per-question appendix in the paper are 
 
 ## 5. Known data discrepancies
 
-- **RESOLVED:** the per-question result for "What are the observed benefits of myo-inositol and folic acid supplementation in PCOS?" previously differed substantially from the paper's reported value (the two generated answers shared only an opening clause before diverging completely, text-similarity ratio 0.327 of 1.0; root cause was never determined). By author decision, the current `rag_results.json` value was treated as authoritative and the manuscript's table row was updated to match it. Verified: the paper's aggregate tables were already computed from this question's current value, so no other numbers needed to change.
-- Three smaller per-question differences (beyond rounding, not yet resolved) exist for the insulin-resistance, GI-diet, and mental-health questions.
+- **ALL RESOLVED:** four per-question results previously differed from the paper's reported values -- "What are the observed benefits of myo-inositol and folic acid supplementation in PCOS?" (the largest gap: two generated answers shared only an opening clause before diverging completely, text-similarity ratio 0.327 of 1.0), plus the insulin-resistance, GI-diet, and mental/emotional-wellbeing questions (smaller gaps). Root cause for the differences was never determined. By author decision, the current `rag_results.json` value was treated as authoritative in every case, and the manuscript's table rows were updated to match. Verified: the paper's aggregate tables were already computed from each question's current value, so no other numbers needed to change. All 30 Table A1 rows now match `rag_results.json` exactly.
 - A heuristic check (string-matching each generated answer against its own retrieved chunks) suggests the extractive fallback may have fired for at most 2 rows — unconfirmed, not a precise count.
 
 ## 6. What this document does not cover
