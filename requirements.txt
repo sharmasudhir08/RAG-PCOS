@@ -1,0 +1,11 @@
+--extra-index-url https://download.pytorch.org/whl/cu118
+numpy
+faiss-cpu
+sentence-transformers
+requests
+accelerate
+nltk
+rouge-score
+bert-score
+pdfplumber
+bitsandbytes

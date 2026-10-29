@@ -1,0 +1,42 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using the metadata below. A journal citation for the accompanying paper will be added here once NCAA-D-25-04415 is accepted and published -- see the commented preferred-citation block at the bottom of this file."
+title: "RAG-PCOS: Retrieval-Augmented Generation for Medical QA on Polycystic Ovary Syndrome"
+type: software
+authors:
+  - family-names: "Singh"
+    given-names: "Jaskirat"
+  - family-names: "Sharma"
+    given-names: "Sudhir Kumar"
+  - family-names: "Vasishth"
+    given-names: "Sneha"
+repository-code: "https://github.com/sharmasudhir08/RAG-PCOS"
+license: MIT
+keywords:
+  - retrieval-augmented-generation
+  - RAG
+  - medical question answering
+  - PCOS
+  - polycystic ovary syndrome
+  - NLP
+
+# Once the manuscript is accepted and published, uncomment and fill in the
+# block below (remove the leading "# " from each line), and set
+# cff-version/message as appropriate for a dual software+paper citation.
+#
+# preferred-citation:
+#   type: article
+#   title: "Retrieval-Augmented Generation for Medical QA: A Case Study on Polycystic Ovary Syndrome"
+#   authors:
+#     - family-names: "Singh"
+#       given-names: "Jaskirat"
+#     - family-names: "Sharma"
+#       given-names: "Sudhir Kumar"
+#     - family-names: "Vasishth"
+#       given-names: "Sneha"
+#   journal: "TBD -- journal name"
+#   year: TBD
+#   volume: TBD
+#   issue: TBD
+#   start: TBD
+#   end: TBD
+#   doi: "TBD"

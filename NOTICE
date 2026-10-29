@@ -1,0 +1,35 @@
+RAG-PCOS
+Copyright (c) 2026 Jaskirat Singh, Sudhir Kumar Sharma, Sneha Vasishth
+
+This repository is licensed under the MIT License (see LICENSE). It depends
+on the following third-party models and libraries, each under its own
+license. None of these are redistributed in this repository -- they are
+downloaded separately when you follow the setup instructions in README.md.
+
+Pretrained models (not included in this repo; download separately):
+  - all-MiniLM-L6-v2 (sentence-transformers / Microsoft)
+    License: Apache License 2.0
+    https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2
+
+  - TinyLlama-1.1B-Chat-v1.0 (TinyLlama project)
+    License: Apache License 2.0
+    https://huggingface.co/TinyLlama/TinyLlama-1.1B-Chat-v1.0
+
+Key open-source libraries used (installed via requirements.txt):
+  - faiss-cpu (Meta AI) -- MIT License
+  - sentence-transformers (UKP Lab) -- Apache License 2.0
+  - transformers (Hugging Face) -- Apache License 2.0
+  - nltk -- Apache License 2.0
+  - pdfplumber (jsvine) -- MIT License
+  - rouge-score -- Apache License 2.0
+  - bert-score -- MIT License
+  - accelerate (Hugging Face) -- Apache License 2.0
+  - bitsandbytes -- MIT License
+
+See each project's own repository for its full license text. This NOTICE
+file is provided for attribution and convenience; it does not modify the
+terms of any third-party license.
+
+The PCOS research literature used to build the retrieval corpus (see
+PAPERS.md) is NOT included in this repository and remains under its
+original publishers' copyright.
