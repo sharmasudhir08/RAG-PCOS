@@ -11,7 +11,7 @@ All four aggregate tables and the 30-row per-question appendix in the paper are 
 | Cosine 0.780, F1 0.285, BERTScore 0.359, ROUGE-L 0.182, BLEU-2 0.095 (RAG, N=30) | `rag_results.json`, averaged over the matching 30-question subset: 0.7797 / 0.2852 / 0.3585 / 0.1821 / 0.0953 |
 | Same 5 metrics, generator-only baseline: 0.625 / 0.241 / 0.282 / 0.154 / 0.075 | `rag_results.json` `generator_*` fields, same subset: 0.6245 / 0.2412 / 0.2821 / 0.1535 / 0.0754 |
 | Estimated Precision@5 0.297, Recall@5 0.205 | `rag_results.json` `precision_at_k`/`recall_at_k`, same subset: 0.2967 / 0.2049 |
-| Semantic-alignment tiers: High 6 (20%), Intermediate 18 (60%), Low 6 (20%) | Re-thresholding `cosine_similarity` at 0.85/0.70 cutoffs over the same subset reproduces 6/18/6 exactly — **but this thresholding script is not itself present anywhere in this repository** (see §4) |
+| Semantic-alignment tiers: High 6 (20%), Intermediate 18 (60%), Low 6 (20%) | `compute_semantic_tiers.py` (run it: `python compute_semantic_tiers.py`) reproduces 6/18/6 exactly from `rag_results.json` |
 | Per-question B2S/RS/FS/BS/CS values | All 30 of 30 rows match `rag_results.json` exactly (see §5) |
 
 ## 2. Dataset scope
@@ -43,7 +43,7 @@ All four aggregate tables and the 30-row per-question appendix in the paper are 
 | k reduced automatically when context exceeds the token budget; actual k logged per question | `DocumentQA.py`, `get_answer()` (the `while k >= 1` retry loop); every row in `rag_results.json` carries a `k_used` field |
 | FAISS `IndexFlatL2` (exact L2 search) | `DocumentRetriever.py`, `build_index()`: `faiss.IndexFlatL2(dimension)` |
 | Cosine-similarity relevance threshold 0.75 for Precision@k/Recall@k | `main.py` argparse default `--retrieval_relevance_threshold 0.75` |
-| Semantic-alignment tiers at 0.85/0.70 cosine cutoffs | **Not implemented by any script in this repository.** `main.py`'s only labeling function, `assign_groundedness_label()`, uses different thresholds (0.90/0.75) and different label names ("Grounded"/"Partially Grounded"/"Hallucinated"). The 0.85/0.70 tiers used in the paper's Table 6 and appendix were computed by a method not present in this codebase. |
+| Semantic-alignment tiers at 0.85/0.70 cosine cutoffs | `compute_semantic_tiers.py`, `tier()` function. (Note: `main.py`'s own labeling function, `assign_groundedness_label()`, uses different thresholds (0.90/0.75) and different label names ("Grounded"/"Partially Grounded"/"Hallucinated") for a separate, older scheme -- `compute_semantic_tiers.py` is the one that matches the paper's Table 6 and Table A1 tier column.) |
 | Extractive-sentence fallback when generation fails | `DocumentQA.py`, `_extractive_fallback()` — fires when the generator's output is empty or one of a few known failure strings (see `get_answer()`) |
 
 ## 5. Known data discrepancies

@@ -21,6 +21,7 @@ RAG-PCOS/
 ├── ResponseGenerator.py     TinyLlama wrapper (RAG + no-retrieval baseline)
 ├── pcos_qna.json            30 gold question/reference-answer pairs
 ├── rag_results.json         30 full per-question evaluation results
+├── compute_semantic_tiers.py  reproduces the High/Intermediate/Low tier distribution (Table 6)
 ├── PAPERS.md                bibliography manifest for the source corpus
 ├── TRACEABILITY.md          every reported number traced to its source
 │
@@ -88,6 +89,7 @@ This builds the FAISS index from `Data/`, answers every question in `pcos_qna.js
 | `DocumentQA.py` | Retrieves top-k chunks, fits them into the generator's token budget, calls the generator, falls back to extractive-sentence selection if generation fails |
 | `ResponseGenerator.py` | Wraps TinyLlama-1.1B-Chat-v1.0 for both grounded (RAG) and ungrounded (no-retrieval baseline) generation |
 | `main.py` | Evaluation driver — runs both conditions over `pcos_qna.json`, computes all metrics, writes `rag_results.json` |
+| `compute_semantic_tiers.py` | Reproduces the High/Intermediate/Low semantic-alignment tier distribution (0.85/0.70 cosine cutoffs) from `rag_results.json` — run `python compute_semantic_tiers.py` |
 | `pcos_qna.json` | Gold question → reference-answer pairs used for evaluation |
 | `rag_results.json` | Full per-question evaluation output from the last run (included for reproducibility without re-running inference) |
 | `PAPERS.md` | Bibliography manifest of the source corpus (PDFs not redistributed here) |
